@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lee.seckill.dao.SeckillDao">
+
+
+    <!-- xml文件中<=号写法： <![CDATA[ <= ]]>  -->
+    <!--
+         1、用户秒杀时间必须在(秒杀开始时间,秒杀结束时间)之间
+         2、商品还有库存
+      -->
+    <update id="reduceNumber">
+      UPDATE
+        seckill
+      SET number = number - 1
+      WHERE seckill_id = #{seckillId}
+        AND start_time <![CDATA[ <= ]]>  #{killTime}
+        AND  end_time >= #{killTime}
+        AND number > 0;
+    </update>
+
+    <select id="queryById" resultType="Seckill" parameterType="Long">
+        SELECT seckill_id,name,number,start_time,end_time,create_time
+          FROM seckill
+        WHERE seckill_id = #{seckillId}
+    </select>
+
+    <select id="queryAll" resultType="Seckill">
+        SELECT seckill_id,name,number,start_time,end_time,create_time
+        FROM seckill
+        ORDER BY create_time DESC
+        LIMIT #{offset} , #{limit} 
+    </select>
+
+    <!-- 使用Mybatis调用mysql存储过程
+        mode=IN ：对应存储过程的传入参数
+        mode=OUT：对应存储过程的输出参数,执行完后会把返回值赋值到result中
+     -->
+    <select id="killByProcedure" statementType="CALLABLE">
+        call execute_seckill(
+          #{seckillId,jdbcType=BIGINT,mode=IN},
+          #{phone,jdbcType=BIGINT,mode=IN},
+          #{killTime,jdbcType=BIGINT,mode=IN},
+          #{result,jdbcType=INTEGER,mode=OUT}
+        )
+    </select>
+
+</mapper>

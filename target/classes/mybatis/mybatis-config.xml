@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- 全局配置 -->
+    <settings>
+        <!-- 设置驼峰匹配 -->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 获取数据库自增id -->
+        <setting name="useGeneratedKeys" value="true" />
+        <!-- 使用列标签代替列名。
+        例如:select title_name as titleName ... 会赋值到pojo对应的属性中 -->
+        <setting name="useColumnLabel" value="true" />
+    </settings>
+
+
+</configuration>
