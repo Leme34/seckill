@@ -22,7 +22,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://localhost:3306/seckill"
                         userId="root"
-                        password="815211859">
+                        password="***">
         </jdbcConnection>
 
         <javaTypeResolver >
