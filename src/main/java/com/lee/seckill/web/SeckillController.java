@@ -65,12 +65,12 @@ public class SeckillController {
         SeckillResult result;
         //捕获service层抛出的不同异常返回不同的结果
         try {
-            Exposer exposer = seckillService.exportSeckillUrl(seckillId);
-            result = new SeckillResult(true, exposer);
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            result = new SeckillResult(false, e.getMessage());
-        }
+        Exposer exposer = seckillService.exportSeckillUrl(seckillId);
+        result = new SeckillResult(true, exposer);
+    } catch (Exception e) {
+        logger.error(e.getMessage());
+        result = new SeckillResult(false, e.getMessage());
+    }
         return result;
     }
 

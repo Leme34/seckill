@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="seckill@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+  <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.14">
     <root id="1"/>
     <schema id="2" parent="1" name="seckill">
       <Current>1</Current>
@@ -43,40 +43,40 @@
     <column id="33" parent="31" name="seckill_id">
       <Position>1</Position>
       <Comment>商品库存id</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
     <column id="34" parent="31" name="name">
       <Position>2</Position>
       <Comment>商品名称</Comment>
-      <DataType>varchar(120)|0</DataType>
+      <DataType>varchar(120)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="35" parent="31" name="number">
       <Position>3</Position>
       <Comment>库存数量</Comment>
-      <DataType>int(11)|0</DataType>
+      <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="36" parent="31" name="start_time">
       <Position>4</Position>
       <Comment>秒杀开始时间</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
     <column id="37" parent="31" name="end_time">
       <Position>5</Position>
       <Comment>秒杀结束时间</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;0000-00-00 00:00:00&apos;</DefaultExpression>
     </column>
     <column id="38" parent="31" name="create_time">
       <Position>6</Position>
       <Comment>创建时间</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>
@@ -97,26 +97,26 @@
     <column id="43" parent="32" name="seckill_id">
       <Position>1</Position>
       <Comment>秒杀商品id</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="44" parent="32" name="user_phone">
       <Position>2</Position>
       <Comment>用户手机号</Comment>
-      <DataType>bigint(20)|0</DataType>
+      <DataType>bigint(20)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="45" parent="32" name="state">
       <Position>3</Position>
       <Comment>状态标识：-1无效 0成功 1已付款</Comment>
-      <DataType>tinyint(4)|0</DataType>
+      <DataType>tinyint(4)|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>&apos;-1&apos;</DefaultExpression>
     </column>
     <column id="46" parent="32" name="create_time">
       <Position>4</Position>
       <Comment>创建时间</Comment>
-      <DataType>timestamp|0</DataType>
+      <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
     </column>

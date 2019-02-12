@@ -92,12 +92,12 @@ public class SeckillServiceImpl implements SeckillService {
             //TODO 优化点2、先执行insert(不会获得行级锁),再执行update(获得行级锁),commit/rollback事务释放锁,从而减少等待释放锁的时间
             //1、记录秒杀成功详细
             int insertRows = successkilledDao.insertSuccessKilled(seckillId, userPhone);
-            if (insertRows <= 0) {  //库存为0或不在秒杀时间内则失败,rollback
+            if (insertRows <= 0) {  //重复秒杀,rollback
                 throw new RepeatKillException("seckill repeat");
             } else {
                 //2、减库存
                 int updateRows = seckillDao.reduceNumber(seckillId, now);
-                if (updateRows <= 0) {  //重复秒杀,rollback
+                if (updateRows <= 0) {  //库存为0或不在秒杀时间内则失败
                     throw new SeckillCloseException("seckill is closed");
                 } else {
                     //秒杀成功,返回秒杀成功详细,commit
